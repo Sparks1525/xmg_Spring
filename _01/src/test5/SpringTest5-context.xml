@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd" default-lazy-init="true">
+
+
+    <bean id="student_5" name="student_5_name" class="bean.Student">
+        <property name="id" value="5"/>
+        <property name="name" value="wangwu"/>
+        <property name="age" value="25"/>
+    </bean>
+
+
+    <bean id="teacher_6" name="teacher_6_name" class="bean.Teacher">
+        <property name="id" value="6"/>
+        <property name="name" value="zhaoliu"/>
+        <property name="age" value="26"/>
+    </bean>
+
+</beans>
