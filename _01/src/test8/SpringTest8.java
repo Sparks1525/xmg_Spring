@@ -1,7 +1,6 @@
 package test8;
 
 
-import bean.Student;
 import bean.Teacher;
 import org.junit.Test;
 import org.junit.runner.RunWith;
