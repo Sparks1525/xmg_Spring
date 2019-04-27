@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- beans:javabean
+     spring是一个放java对象的容器,把放在spring中的java对象称为javabean
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="otherBean" class="com._520it.spring.day1.conDi.OtherBean"/>
+
+    <!--
+    <bean id="somebean" class="com._520it.spring.day1.conDi.SomeBean">
+        <constructor-arg value="name"/>
+        <constructor-arg value="1111"/>
+        <constructor-arg value="otherBean"/>
+    </bean>
+    -->
+
+    <!-- spring提供了一些额外的配置来方便spring找到对应的构造器
+        1,index:通过构造方法参数位置来指定;从0开始;
+        2,type:在构造方法中参数的类型;
+        3,name:使用构造方法参数的名字来设置;
+
+    -->
+    <!--
+    <bean id="somebean" class="com._520it.spring.day1.conDi.SomeBean">
+        <constructor-arg value="otherBean" index="1"/>
+        <constructor-arg value="1111" index="0"/>
+    </bean>
+    -->
+
+    <!--
+    <bean id="somebean" class="com._520it.spring.day1.conDi.SomeBean">
+        <constructor-arg value="otherBean"/>
+        <constructor-arg value="1111" type="java.lang.Integer"/>
+    </bean>
+    -->
+
+    <bean id="somebean" class="com._520it.spring.day1.conDi.SomeBean">
+        <constructor-arg value="otherBean" name="other"/>
+        <constructor-arg value="1111" name="name"/>
+    </bean>
+
+</beans>
