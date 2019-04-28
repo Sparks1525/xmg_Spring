@@ -22,6 +22,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  *      2,这个配置文件的名字叫做 测试类-context.xml
  */
 @ContextConfiguration
+//@ContextConfiguration(locations = "MyTest-context.xml")
 public class SpringTest {
 
     private SomeBean someBean;
