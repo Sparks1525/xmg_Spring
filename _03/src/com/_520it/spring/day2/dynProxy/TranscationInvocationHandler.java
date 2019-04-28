@@ -5,14 +5,26 @@ import java.lang.reflect.Method;
 
 public class TranscationInvocationHandler implements InvocationHandler {
 
-    private IEmployeeService targe;
+//    private IEmployeeService target;
+    private Object target;
     private TranscationManager txManager;
 
-    public TranscationInvocationHandler(IEmployeeService service, TranscationManager txManager) {
+//    public TranscationInvocationHandler(IEmployeeService service, TranscationManager txManager) {
+//        this.txManager = txManager;
+//        this.target = service;
+//    }
+
+    public TranscationInvocationHandler(Object target, TranscationManager txManager) {
         this.txManager = txManager;
-        this.targe = service;
+        this.target = target;
     }
 
+    /**
+     *  参数:
+     *  1,proxy:代理出来的对象;
+     *  2,method:这次调用的方法;
+     *  3,args:这次调用方法传入的参数;
+     */
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
 //        System.out.println("==================================");
@@ -21,7 +33,7 @@ public class TranscationInvocationHandler implements InvocationHandler {
 
         txManager.begin();
         try{
-            Object ret = method.invoke(targe, args);
+            Object ret = method.invoke(target, args);
             txManager.commit();
             return ret;
         } catch (Exception e){

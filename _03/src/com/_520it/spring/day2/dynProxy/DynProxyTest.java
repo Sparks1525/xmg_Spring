@@ -16,16 +16,29 @@ public class DynProxyTest {
     private IEmployeeService service;
 
     @Autowired
+    private IDepartmentService deptService;
+
+    @Autowired
     private TranscationManager txManager;
 
     @Test
-    public void testProxy(){
+    public void testProxy() {
         //Proxy:专门用来生产代理类的对象
         //newProxyInstance需要三个参数:
         //1,ClassLoader:专门用来加载类的;
         //2,interface:需要接口,这个接口就是我们目标对象实现的接口
         IEmployeeService o = (IEmployeeService) Proxy.newProxyInstance(service.getClass().getClassLoader(),
-                new Class[]{IEmployeeService.class},new TranscationInvocationHandler(service, txManager));
+                new Class[]{IEmployeeService.class}, new TranscationInvocationHandler(service, txManager));
+        System.out.println(o.getClass());
         o.update(new Employee());
+    }
+
+
+    @Test
+    public void testProxy2() {
+        IDepartmentService o = (IDepartmentService)Proxy.newProxyInstance(deptService.getClass().getClassLoader(),
+                new Class[]{IDepartmentService.class},
+                new TranscationInvocationHandler(deptService, txManager));
+        o.save(new Department());
     }
 }

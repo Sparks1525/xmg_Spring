@@ -13,5 +13,6 @@
 
 
     <bean id="employeeService" class="com._520it.spring.day2.dynProxy.EmployeeServiceImpl"/>
+    <bean id="deptService" class="com._520it.spring.day2.dynProxy.DepartmentServiceImpl"/>
     <bean id="txManager" class="com._520it.spring.day2.dynProxy.TranscationManager"/>
 </beans>
