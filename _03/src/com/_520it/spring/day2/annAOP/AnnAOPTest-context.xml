@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springfaramework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springfaramework.org/schema/aop/spring-context.xsd">
+
+
+
+    <!-- 要使用annotation的AOP,比如在XML中引入aspectj-autoproxy,
+        这个元素相当于引入了用于解析@Aspect和@Before等元素的第三方程序
+    -->
+    <aop:aspectj-autoproxy/>
+    <context:component-scan base-package="com._520it.spring.day2.annAOP"/>
+
+
+</beans>

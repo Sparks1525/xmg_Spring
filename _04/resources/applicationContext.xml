@@ -15,15 +15,16 @@
         2,Spring提供了两种前缀标记来辅助查找配置文件;
             1,[classpath:]:代表从classpath开始寻找后面的资源文件;(推荐使用)
             2,[file:]:代表使用文件系统的方式寻找后面的文件(文件的完整路径);
-    -->
     <import resource="com/_520it/spring/day1/name/SpringTest-context.xml"/>
-
+    -->
 
     <!-- bean:配置一个需要spring管理的javabean
         id:这一个javabean的名字(唯一)
         class:这个javabean的类型,spring就是靠这个类型来实例化这个bean的;
-    -->
     <bean id="helloworld" class="com._520it.spring.day1.hello.HelloWorld"/>
+    -->
+
+
 
 
 
