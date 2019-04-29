@@ -11,10 +11,6 @@
 
     <bean id="otherbean" class="com._520it.spring.day2._01_anndi.OtherBean"/>
     <bean id="otherBean2" class="com._520it.spring.day2._01_anndi.OtherBean"/>
-
-
-
-
     <bean id="somebean" class="com._520it.spring.day2._01_anndi.SomeBean"/>
 
 </beans>
