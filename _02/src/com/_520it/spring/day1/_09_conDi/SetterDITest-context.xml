@@ -14,7 +14,7 @@
     <bean id="somebean" class="com._520it.spring.day1._09_conDionDi.SomeBean">
         <constructor-arg value="_02_name"/>
         <constructor-arg value="1111"/>
-        <constructor-arg value="otherBean"/>
+        <constructor-arg ref="otherBean"/>
     </bean>
     -->
 
@@ -33,13 +33,13 @@
 
     <!--
     <bean id="somebean" class="com._520it.spring.day1._09_conDionDi.SomeBean">
-        <constructor-arg value="otherBean"/>
+        <constructor-arg ref="otherBean"/>
         <constructor-arg value="1111" type="java.lang.Integer"/>
     </bean>
     -->
 
     <bean id="somebean" class="com._520it.spring.day1._09_conDi.SomeBean">
-        <constructor-arg value="otherBean" name="other"/>
+        <constructor-arg ref="otherBean" name="other"/>
         <constructor-arg value="1111" name="name"/>
     </bean>
 
