@@ -17,6 +17,8 @@
             session:在一个会话中(HttpSession)中,创建一个;(一般不会使用,必须是在有Web环境的Spring中使用,,,,,SpringMVC)
         -->
 
+        <!--如果一个bean的scope属性为scope="pototype"时，即使设置了lazy-init="false",
+        容器启动时不实例化bean,而是调用getBean方法是实例化的-->
         <bean id="somebean" class="com._520it.spring.day1._06_scope.SomeBean" scope="prototype"/>
 
         <!-- <bean id="somebean" class="com._520it.spring.day1._05_scopecope.SomeBean" _06_scope="XXXX.XXXX.ThreadScope"/> -->
