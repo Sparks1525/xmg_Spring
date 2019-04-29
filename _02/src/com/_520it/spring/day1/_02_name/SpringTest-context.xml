@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- beans:javabean
+     spring是一个放java对象的容器,把放在spring中的java对象称为javabean
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- id属性要求必须在spring中是唯一的,name属性也是唯一的
+        如果我们得bean需要其他的名字,可以通过name属性来为一个bean配置更多的名字;
+
+        并且在name属性中可以使用逗号,分号和空格来分割多个名字;
+        在代码中,可以使用beanFactory.getAlias来得到一个bean的所有名字;
+
+        什么时候会使用name?
+        1,一般就只使用id就可以了;
+        2,在SpringMVC版本中,可以在name中配置多个名字来代表映射的URL地址
+    -->
+    <bean id="somebean" name="somebean1,somebean2" class="com._520it.spring.day1._02_name.SomeBean"/>
+
+    <!-- 使用ApplicationContext时,配置lazy-init=true来让bean延迟实例化 -->
+    <!-- 可以在beans元素配置default-lazy-init=true来让这个beans里面所有的bean延迟实例化 -->
+    <bean id="somebean3" class="com._520it.spring.day1._02_name.SomeBean" lazy-init="true"/>
+</beans>

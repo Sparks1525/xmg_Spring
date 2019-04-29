@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- 导入占位符配置文件
+            location:配置文件地址,可以使用前缀
+    -->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!-- 配置连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!-- 不能实例化的对象配置在spring里面
+        abstract="true":代表这个类是抽象的,不用实例化;
+    -->
+    <!--
+    <bean id="baseDAO" class="org.springframework._01_jdbc.core.support.JdbcDaoSupport" abstract="true">
+        <property _02_name="dataSource" ref="dataSource"/>
+    </bean>
+    -->
+    <bean id="baseDAO" abstract="true">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="employeeDAO" class="com._520it.spring.day3._01_jdbc2.EmployeeDAOImpl" parent="baseDAO"/>
+
+    <!-- 在子类中要配置parent属性,指向父类bean的引用 -->
+    <bean id="deptDAO" class="com._520it.spring.day3._01_jdbc2.DepartmentDAOImpl" parent="baseDAO"/>
+
+</beans>

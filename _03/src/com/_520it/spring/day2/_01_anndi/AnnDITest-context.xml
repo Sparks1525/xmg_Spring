@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- beans:javabean
+     spring是一个放java对象的容器,把放在spring中的java对象称为javabean
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <bean id="otherbean" class="com._520it.spring.day2._01_anndi.OtherBean"/>
+    <bean id="otherBean2" class="com._520it.spring.day2._01_anndi.OtherBean"/>
+
+
+
+
+    <bean id="somebean" class="com._520it.spring.day2._01_anndi.SomeBean"/>
+
+</beans>

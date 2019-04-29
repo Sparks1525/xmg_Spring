@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                        http://www.springframework.org/schema/beans/spring-beans.xsd
+                        http://www.springframework.org/schema/context
+                        http://www.springfaramework.org/schema/context/spring-context.xsd
+                        http://www.springframework.org/schema/aop
+                        http://www.springfaramework.org/schema/aop/spring-aop.xsd
+                        http://www.springframework.org/schema/tx
+                        http://www.springfaramework.org/schema/tx/spring-tx.xsd">
+
+    <!-- 导入占位符配置文件
+            location:配置文件地址,可以使用前缀
+    -->
+    <context:property-placeholder location="classpath:db.properties"/>
+
+    <!-- 配置连接池 -->
+    <bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+          destroy-method="close">
+        <property name="driverClassName" value="${jdbc.driverClassName}"/>
+        <property name="url" value="${jdbc.url}"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+    </bean>
+
+    <!-- 配置事务管理器 -->
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <!-- 配置事务 -->
+    <aop:config>
+        <aop:pointcut expression="execution (* com._520it.spring.day3._02_transfer2.*Service.*(..))" id="pc"/>
+        <!-- advisor:其实就相当于apsect,一个advisor相当于一个切面 -->
+        <aop:advisor advice-ref="txAdvice" pointcut-ref="pc"/>
+    </aop:config>
+
+    <!-- 理解为:spring事务的通知
+        1,要配置一个id,这个id是拿给AOP来用的;
+        2,要配置transcation-manager,注意,如果你的transactionManager的名字就是transactionManager,就可以省略不配;
+    -->
+    <tx:advice id="txAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <!-- 配置事务方法属性 -->
+            <!-- 配置在我拦截到的对象中,每个方法怎么去处理事务 -->
+            <!--<tx:method _02_name="get*" read-only="true"/>-->
+            <!--<tx:method _02_name="list*" read-only="true"/>-->
+            <!--<tx:method _02_name="query*" read-only="true" isolation="DEFAULT" rollback-for="java.lang.Exception"/>-->
+            <tx:method name="*" propagation="REQUIRED"/>
+        </tx:attributes>
+    </tx:advice>
+
+    <bean id="accountDao" class="com._520it.spring.day3._02_transfer2.AccountDAOImpl">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+
+    <bean id="accountService" class="com._520it.spring.day3._02_transfer2.AccountServiceImpl">
+        <property name="dao" ref="accountDao"/>
+    </bean>
+
+</beans>
