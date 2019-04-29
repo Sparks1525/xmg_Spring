@@ -8,8 +8,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
                         http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- id属性要求必须在spring中是唯一的,
+    <!-- id属性要求必须在spring中是唯一的,name属性也是唯一的
         如果我们得bean需要其他的名字,可以通过name属性来为一个bean配置更多的名字;
+
         并且在name属性中可以使用逗号,分号和空格来分割多个名字;
         在代码中,可以使用beanFactory.getAlias来得到一个bean的所有名字;
 

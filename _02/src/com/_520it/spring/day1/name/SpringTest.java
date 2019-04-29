@@ -33,6 +33,18 @@ public class SpringTest {
     @Autowired
     private BeanFactory factory;
 
+
+    /**
+     * 也可以把@Autowired标签打在setXXX上
+     */
+//    private BeanFactory beanFactory;
+//    @Autowired
+//    public void setBeanFactory(BeanFactory beanFactory){
+//        this.beanFactory = beanFactory;
+//    }
+
+
+
     @Test
     public void test() {
         someBean = factory.getBean("somebean", SomeBean.class);
