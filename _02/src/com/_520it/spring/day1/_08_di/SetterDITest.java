@@ -18,7 +18,7 @@ public class SetterDITest {
     @Test
     public void testBean(){
 
-        com._520it.spring.day1._06_scope.SomeBean bean = ctx.getBean("somebean", com._520it.spring.day1._06_scope.SomeBean.class);
+        SomeBean bean = ctx.getBean("somebean", SomeBean.class);
         System.out.println(bean);
     }
 
