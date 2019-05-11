@@ -19,7 +19,7 @@
     <context:component-scan base-package="com._520it.spring.day3._03_annTx"/>
 
     <!-- 使用annotation控制事务,这个元素相当于引入了用于解析@Transactional标签的第三方程序
-        注意,这个标签默认的transaction-manager名字是transactionManager,如果不是,必须重洗配置
+        注意,这个标签默认的transaction-manager名字是transactionManager,如果不是,必须重新配置
     -->
     <tx:annotation-driven transaction-manager="txManager"/>
     
